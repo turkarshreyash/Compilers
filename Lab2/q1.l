@@ -1,11 +1,11 @@
 %{
     int vowels = 0;
-    int consonants_vowels = 0;
+    int consonants = 0;
 %}
 
 %%
 [aeiouAEIOU] {vowels++;}
-[a-zA-Z] {consonants_vowels++;}
+[a-zA-Z] {consonants++;}
 \n {return;}
 %%
 
@@ -15,6 +15,6 @@ int max(int a, int b){
 }
 int main(){
     yylex();
-    printf("Vowels : %d\n Consonants : %d",vowels,max(consonants_vowels-vowels,0));
+    printf("Vowels : %d\n Consonants : %d",vowels,consonants);
     return;
 }
