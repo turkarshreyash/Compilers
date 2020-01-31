@@ -6,14 +6,15 @@
 
 %%
 
-[a-zA-Z]+ { isKeyword(yytext)?printf("Keyword!"):printf("Not a Keyword!");}
+[a-zA-Z]+ { isKeyword(yytext)?printf("%s -> Keyword!\n",yytext):printf("%s -> Valid ID!\n",yytext);}
+[a-zA-Z_][a-zA-Z0-9_]* {printf("%s -> Valid ID!\n",yytext);}
 \n {return;}
-
+. {}
 %%
 
 int isKeyword(char* str) 
 { 
-    if (!strcmp(str, "if") || !strcmp(str, "else") || 
+    if (!strcmp(str, "for")||!strcmp(str, "if") || !strcmp(str, "else") || 
         !strcmp(str, "while") || !strcmp(str, "do") ||  
         !strcmp(str, "break") ||  
          !strcmp(str, "continue") || !strcmp(str, "int") 
